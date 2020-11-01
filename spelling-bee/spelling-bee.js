@@ -4,7 +4,7 @@ const readline = require('readline');
 class Trie {
     constructor () {
         this.children = { };
-        this.terminal = 0;
+        this.terminal = false;
     }
 
     insert(word) {
@@ -26,18 +26,17 @@ class Trie {
     }
 
     makeTerminal() {
-        this.terminal = 1;
+        this.terminal = true;
     }
 
     isTerminal() {
         return this.terminal;
-        let node = this.children[firstChar];
     }
 
     lookup(word) {
         let firstChar = word.slice(0,1);
         if(!(firstChar in this.children)) {
-            return 0;
+            return false;
         }
         let node = this.children[firstChar];
         if(word.length === 1) {
